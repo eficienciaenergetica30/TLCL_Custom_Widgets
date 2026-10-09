@@ -9,24 +9,26 @@
         height: 100%;
       }
       button {
-        background-color: #0a6ed1;
+        background-color: #bb0000;
         color: #ffffff;
-        border: 1px solid #0a6ed1;
-        border-radius: 4px;
+        border: 1px solid #bb0000;
+        border-radius: 8px;
         padding: 8px 16px;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
         width: 100%;
         height: 100%;
         box-sizing: border-box;
       }
       button:hover {
-        background-color: #0854a1;
+        background-color: #a20000;
+        border-color: #a20000;
       }
       button:active {
-        background-color: #063a70;
+        background-color: #880000;
+        border-color: #880000;
       }
       button:disabled {
         background-color: #cccccc;
@@ -35,7 +37,7 @@
         opacity: 0.7;
       }
     </style>
-    <button id="btn-trigger">Ejecutar Proceso TLCL11</button>
+    <button id="btn-trigger">Procesar</button>
   `;
 
   class TLCL11ButtonWidget extends HTMLElement {
@@ -45,7 +47,7 @@
       this._shadowRoot.appendChild(template.content.cloneNode(true));
 
       this._button = this._shadowRoot.getElementById("btn-trigger");
-      this._buttonLabel = "Ejecutar Proceso TLCL11";
+      this._buttonLabel = "Procesar";
       this._lastResponse = "";
 
       this._button.addEventListener("click", () => {
@@ -84,7 +86,6 @@
       return this._lastResponse;
     }
 
-    // Método expuesto para SAC
     getMessage() {
       try {
         if (!this._lastResponse) return "";
@@ -116,23 +117,23 @@
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
+          throw new Error(`HTTP ${response.status}`);
         }
 
         const data = await response.json();
         this._lastResponse = JSON.stringify(data);
 
       } catch (error) {
-        console.error("Error API TLCL11:", error);
+        console.error("[TLCL11 Widget Error]:", error);
         this._lastResponse = JSON.stringify({
           success: false,
-          message: error.message
+          message: error.message || "Error al conectar con la API"
         });
       } finally {
         this._button.disabled = false;
         this._button.innerText = originalText;
-
-        // Disparar evento limpio para SAC
+        
+        // Disparar evento a SAC
         this.dispatchEvent(new Event("onApiResponse"));
       }
     }

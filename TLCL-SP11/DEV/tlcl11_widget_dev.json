@@ -1,6 +1,6 @@
 {
   "id": "com.custom.tlcl11.button.dev",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "name": "TLCL11 API Trigger Button (DEV)",
   "description": "Botón personalizado para ejecutar la API TLCL11 (Entorno DEV)",
   "newInstancePrefix": "TLCL11_Button_Dev",
@@ -9,7 +9,7 @@
     {
       "kind": "main",
       "tag": "tlcl11-button-widget",
-      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/DEV/tlcl11_widget_dev.js?v=1.0.1",
+      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/DEV/tlcl11_widget_dev.js?v=1.0.3",
       "integrity": "",
       "ignoreIntegrity": true
     }
@@ -18,7 +18,7 @@
     "buttonLabel": {
       "type": "string",
       "description": "Texto visual del botón",
-      "default": "Ejecutar Proceso TLCL11"
+      "default": "Procesar"
     },
     "lastResponse": {
       "type": "string",
@@ -47,14 +47,14 @@
       "description": "Devuelve la última respuesta obtenida de la API",
       "parameters": []
     },
+    "getMessage": {
+      "returnType": "string",
+      "description": "Devuelve únicamente el valor de la propiedad message",
+      "parameters": []
+    },
     "triggerApiCall": {
       "returnType": "void",
       "description": "Ejecuta la llamada a la API manualmente desde un Script de SAC",
-      "parameters": []
-    },
-    "getMessage": {
-      "returnType": "string",
-      "description": "Devuelve únicamente la propiedad message de la respuesta de la API",
       "parameters": []
     }
   },
