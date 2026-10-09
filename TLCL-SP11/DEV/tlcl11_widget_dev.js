@@ -5,6 +5,8 @@
       :host {
         display: inline-block;
         font-family: var(--sapFontFamily, Arial, sans-serif);
+        width: 100%;
+        height: 100%;
       }
       button {
         background-color: #0a6ed1;
@@ -15,9 +17,10 @@
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.2s ease, opacity 0.2s ease;
+        transition: background-color 0.2s ease;
         width: 100%;
         height: 100%;
+        box-sizing: border-box;
       }
       button:hover {
         background-color: #0854a1;
@@ -50,7 +53,6 @@
       });
     }
 
-    // SAC Property Getters/Setters
     get buttonLabel() {
       return this._buttonLabel;
     }
@@ -70,7 +72,18 @@
       this._lastResponse = value;
     }
 
-    // API Call Execution
+    getButtonLabel() {
+      return this._buttonLabel;
+    }
+
+    setButtonLabel(newLabel) {
+      this.buttonLabel = newLabel;
+    }
+
+    getLastResponse() {
+      return this._lastResponse;
+    }
+
     async triggerApiCall() {
       const endpoint = "https://tlcl-processes-hub.cfapps.us10.hana.ondemand.com/tlcl-hub/tlcl11";
       const payload = {
@@ -78,7 +91,6 @@
         p2: "hardcoded_val2"
       };
 
-      // UI feedback during loading
       const originalText = this._buttonLabel;
       this._button.disabled = true;
       this._button.innerText = "Procesando...";
@@ -93,31 +105,24 @@
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP Error Status: ${response.status}`);
+          throw new Error(`HTTP Error: ${response.status}`);
         }
 
         const data = await response.json();
         this._lastResponse = JSON.stringify(data);
 
-        // Disparar evento a SAC
-        this.dispatchEvent(new CustomEvent("onApiResponse", {
-          detail: { response: data }
-        }));
-
       } catch (error) {
-        console.error("Error al consumir API TLCL11:", error);
+        console.error("Error API TLCL11:", error);
         this._lastResponse = JSON.stringify({
           success: false,
           message: error.message
         });
-
-        this.dispatchEvent(new CustomEvent("onApiResponse", {
-          detail: { response: JSON.parse(this._lastResponse) }
-        }));
-
       } finally {
         this._button.disabled = false;
         this._button.innerText = originalText;
+        
+        // Disparar evento limpio para SAC
+        this.dispatchEvent(new Event("onApiResponse"));
       }
     }
   }

@@ -9,7 +9,7 @@
     {
       "kind": "main",
       "tag": "tlcl11-button-widget",
-      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/DEV/tlcl11_widget_dev.js?v=1.0.0",
+      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/DEV/tlcl11_widget_dev.js?v=1.0.1",
       "integrity": "",
       "ignoreIntegrity": true
     }
@@ -29,23 +29,28 @@
   "methods": {
     "getButtonLabel": {
       "returnType": "string",
-      "description": "Obtiene el texto actual del botón"
+      "description": "Obtiene el texto actual del botón",
+      "parameters": []
     },
     "setButtonLabel": {
+      "returnType": "void",
+      "description": "Cambia el texto del botón dinámicamente",
       "parameters": [
         {
           "name": "newLabel",
           "type": "string"
         }
-      ],
-      "description": "Cambia el texto del botón dinámicamente"
+      ]
     },
     "getLastResponse": {
       "returnType": "string",
-      "description": "Devuelve la última respuesta obtenida de la API"
+      "description": "Devuelve la última respuesta obtenida de la API",
+      "parameters": []
     },
     "triggerApiCall": {
-      "description": "Ejecuta la llamada a la API manualmente desde un Script de SAC"
+      "returnType": "void",
+      "description": "Ejecuta la llamada a la API manualmente desde un Script de SAC",
+      "parameters": []
     }
   },
   "events": {
