@@ -1,0 +1,49 @@
+{
+  "id": "com.custom.tlcl11.button.dev",
+  "version": "1.0.0",
+  "name": "TLCL11 API Trigger Button (DEV)",
+  "description": "Botón personalizado para ejecutar la API TLCL11 (Entorno DEV)",
+  "newInstancePrefix": "TLCL11_Button_Dev",
+  "vendor": "Custom",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "tlcl11-button-widget",
+      "url": "https://tu-servidor-o-btp.com/tlcl11_widget_dev.js"
+    }
+  ],
+  "properties": {
+    "buttonLabel": {
+      "type": "string",
+      "description": "Texto del botón",
+      "default": "Ejecutar Proceso TLCL11 (DEV)"
+    },
+    "lastResponse": {
+      "type": "string",
+      "description": "Última respuesta obtenida de la API",
+      "default": ""
+    }
+  },
+  "methods": {
+    "getButtonLabel": {
+      "returnType": "string"
+    },
+    "setButtonLabel": {
+      "parameters": [
+        {
+          "name": "newLabel",
+          "type": "string"
+        }
+      ]
+    },
+    "getLastResponse": {
+      "returnType": "string"
+    },
+    "triggerApiCall": {}
+  },
+  "events": {
+    "onApiResponse": {
+      "description": "Se dispara al recibir la respuesta de la API"
+    }
+  }
+}
