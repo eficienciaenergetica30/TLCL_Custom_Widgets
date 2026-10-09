@@ -9,24 +9,25 @@
     {
       "kind": "main",
       "tag": "tlcl11-button-widget",
-      "url": "https://tu-servidor-o-btp.com/tlcl11_widget_dev.js"
+      "url": "https://raw.githubusercontent.com/eficienciaenergetica30/TLCL_Custom_Widgets/main/TLCL-SP11/DEV/tlcl11_widget_dev.js"
     }
   ],
   "properties": {
     "buttonLabel": {
       "type": "string",
-      "description": "Texto del botón",
-      "default": "Ejecutar Proceso TLCL11 (DEV)"
+      "description": "Texto visual del botón",
+      "default": "Ejecutar Proceso TLCL11"
     },
     "lastResponse": {
       "type": "string",
-      "description": "Última respuesta obtenida de la API",
+      "description": "Almacena la última respuesta de la API en formato JSON string",
       "default": ""
     }
   },
   "methods": {
     "getButtonLabel": {
-      "returnType": "string"
+      "returnType": "string",
+      "description": "Obtiene el texto actual del botón"
     },
     "setButtonLabel": {
       "parameters": [
@@ -34,16 +35,20 @@
           "name": "newLabel",
           "type": "string"
         }
-      ]
+      ],
+      "description": "Cambia el texto del botón dinámicamente"
     },
     "getLastResponse": {
-      "returnType": "string"
+      "returnType": "string",
+      "description": "Devuelve la última respuesta obtenida de la API"
     },
-    "triggerApiCall": {}
+    "triggerApiCall": {
+      "description": "Ejecuta la llamada a la API manualmente desde un Script de SAC"
+    }
   },
   "events": {
     "onApiResponse": {
-      "description": "Se dispara al recibir la respuesta de la API"
+      "description": "Se dispara automáticamente cuando la API responde"
     }
   }
 }
