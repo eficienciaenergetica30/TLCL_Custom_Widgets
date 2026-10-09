@@ -51,6 +51,11 @@
       "returnType": "void",
       "description": "Ejecuta la llamada a la API manualmente desde un Script de SAC",
       "parameters": []
+    },
+    "getMessage": {
+      "returnType": "string",
+      "description": "Devuelve únicamente la propiedad message de la respuesta de la API",
+      "parameters": []
     }
   },
   "events": {

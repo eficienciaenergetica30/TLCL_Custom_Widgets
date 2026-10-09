@@ -84,6 +84,17 @@
       return this._lastResponse;
     }
 
+    // Método expuesto para SAC
+    getMessage() {
+      try {
+        if (!this._lastResponse) return "";
+        const parsed = JSON.parse(this._lastResponse);
+        return parsed.message || "";
+      } catch (e) {
+        return "";
+      }
+    }
+
     async triggerApiCall() {
       const endpoint = "https://tlcl-processes-hub.cfapps.us10.hana.ondemand.com/tlcl-hub/tlcl11";
       const payload = {
@@ -120,7 +131,7 @@
       } finally {
         this._button.disabled = false;
         this._button.innerText = originalText;
-        
+
         // Disparar evento limpio para SAC
         this.dispatchEvent(new Event("onApiResponse"));
       }
