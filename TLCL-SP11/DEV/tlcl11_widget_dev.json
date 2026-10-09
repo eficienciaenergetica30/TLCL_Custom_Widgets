@@ -9,7 +9,9 @@
     {
       "kind": "main",
       "tag": "tlcl11-button-widget",
-      "url": "https://raw.githubusercontent.com/eficienciaenergetica30/TLCL_Custom_Widgets/main/TLCL-SP11/DEV/tlcl11_widget_dev.js"
+      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/DEV/tlcl11_widget_dev.js?v=1.0.0",
+      "integrity": "",
+      "ignoreIntegrity": true
     }
   ],
   "properties": {
