@@ -1,15 +1,15 @@
 {
-  "id": "com.custom.tlcl11.button.dev",
+  "id": "com.custom.tlcl11.button.prd",
   "version": "1.0.2",
-  "name": "TLCL11 API Trigger Button (DEV)",
-  "description": "Botón personalizado para ejecutar la API TLCL11 (Entorno DEV)",
-  "newInstancePrefix": "TLCL11_Button_Dev",
+  "name": "TLCL11 API Trigger Button (PRD)",
+  "description": "Botón personalizado para ejecutar la API TLCL11 (Entorno PRD)",
+  "newInstancePrefix": "TLCL11_Button_Prd",
   "vendor": "Custom",
   "webcomponents": [
     {
       "kind": "main",
       "tag": "tlcl11-button-widget",
-      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/PRD/tlcl11_widget_prd.js?v=1.0.0",
+      "url": "https://cdn.jsdelivr.net/gh/eficienciaenergetica30/TLCL_Custom_Widgets@main/TLCL-SP11/PRD/tlcl11_widget_prd.js?v=1.0.2",
       "integrity": "",
       "ignoreIntegrity": true
     }
